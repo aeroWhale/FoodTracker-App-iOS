@@ -88,8 +88,12 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
         let isPresentingInAddMealMode = presentingViewController is UINavigationController
         if isPresentingInAddMealMode {
+            debugPrint("The presentingViewController is: \(presentingViewController)") // UIViewController
+            debugPrint("The navigationController is: \(navigationController)")
             dismiss(animated: true, completion: nil)
         } else if let owingNavigationController = navigationController {
+            debugPrint("The presentingViewController is: \(presentingViewController)") // nil
+            debugPrint("The navigationController is: \(owingNavigationController)") // UINavigationController
             owingNavigationController.popViewController(animated: true)
         } else {
             fatalError("The MealViewController is not inside a navigation controller.")
